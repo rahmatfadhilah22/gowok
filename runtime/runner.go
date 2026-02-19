@@ -7,7 +7,7 @@ import (
 	"sync"
 	"syscall"
 
-	"github.com/gowok/gowok/some"
+	"github.com/gowok/fp/some"
 )
 
 var exit = os.Exit

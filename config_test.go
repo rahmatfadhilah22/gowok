@@ -7,9 +7,9 @@ import (
 
 	"github.com/golang-must/must"
 	"github.com/gowok/fp/maps"
+	"github.com/gowok/fp/some"
 	"github.com/gowok/gowok/config"
 	"github.com/gowok/gowok/json"
-	"github.com/gowok/gowok/some"
 )
 
 func TestNewConfig(t *testing.T) {

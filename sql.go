@@ -6,9 +6,9 @@ import (
 	"strings"
 	"sync"
 
+	"github.com/gowok/fp/some"
 	"github.com/gowok/gowok/async"
 	"github.com/gowok/gowok/config"
-	"github.com/gowok/gowok/some"
 	"github.com/ngamux/ngamux"
 )
 

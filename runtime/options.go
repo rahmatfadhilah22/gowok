@@ -1,6 +1,6 @@
 package runtime
 
-import "github.com/gowok/gowok/some"
+import "github.com/gowok/fp/some"
 
 type option func(*Runtime)
 

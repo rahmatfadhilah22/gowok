@@ -7,8 +7,8 @@ import (
 	"testing"
 
 	"github.com/golang-must/must"
+	"github.com/gowok/fp/some"
 	"github.com/gowok/gowok/config"
-	"github.com/gowok/gowok/some"
 	"github.com/gowok/gowok/web"
 	"github.com/ngamux/ngamux"
 )

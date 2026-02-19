@@ -1,7 +1,7 @@
 package runtime
 
 import (
-	"github.com/gowok/gowok/some"
+	"github.com/gowok/fp/some"
 )
 
 type Hooks struct {

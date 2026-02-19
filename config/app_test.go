@@ -4,7 +4,7 @@ import (
 	"testing"
 
 	"github.com/golang-must/must"
-	"github.com/gowok/gowok/some"
+	"github.com/gowok/fp/some"
 )
 
 func TestWeb_GetLog(t *testing.T) {

@@ -5,7 +5,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/gowok/gowok/some"
+	"github.com/gowok/fp/some"
 	"github.com/ngamux/middleware/cors"
 	"github.com/ngamux/middleware/log"
 )
