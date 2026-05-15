@@ -87,6 +87,15 @@ func configure(configs ...any) *Project {
 		Config.Forever = Config.Web.Enabled || Config.Net.Enabled
 	}
 
+	if Config.Web.Enabled {
+		go Web.configure()
+		Health.Configure()
+	}
+
+	if Config.Net.Enabled {
+		go Net.configure()
+	}
+
 	_project(project)
 	return project
 }
@@ -95,12 +104,11 @@ func (p *Project) run() {
 	Hooks.OnStarting()()
 
 	if Config.Web.Enabled {
-		go Web.configure()
-		Health.Configure()
+		Web.run()
 	}
 
 	if Config.Net.Enabled {
-		go Net.configure()
+		Net.run()
 	}
 
 	Hooks.OnStarted()()

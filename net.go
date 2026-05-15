@@ -22,8 +22,6 @@ var Net = &_net{
 }
 
 func (p *_net) configure() {
-	slog.Info("starting net")
-
 	if Config.Net.Type == "unix" {
 		_ = os.Remove(Config.Net.Address)
 	}
@@ -35,8 +33,23 @@ func (p *_net) configure() {
 	}
 
 	p.Listener = listen
+}
+
+func (p *_net) HandleFunc(handler func(net.Conn)) {
+	p.handler = handler
+}
+
+func (p *_net) Shutdown() {
+	if p.Listener != nil {
+		_ = p.Close()
+	}
+}
+
+func (p *_net) run() {
+	slog.Info("starting net")
+
 	for {
-		conn, err := listen.Accept()
+		conn, err := p.Listener.Accept()
 		if err != nil {
 			if errors.Is(err, net.ErrClosed) {
 				break
@@ -48,14 +61,4 @@ func (p *_net) configure() {
 		go p.handler(conn)
 	}
 	p.Listener = nil
-}
-
-func (p *_net) HandleFunc(handler func(net.Conn)) {
-	p.handler = handler
-}
-
-func (p *_net) Shutdown() {
-	if p.Listener != nil {
-		_ = p.Close()
-	}
 }

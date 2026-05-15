@@ -63,12 +63,11 @@ func (w *_webHandler) SSE(handler func(ctx *web.CtxSse)) http.HandlerFunc {
 
 func (p *_web) configure() {
 	c := Config.Web
-	slog.Info("starting web", "host", c.Host)
 
 	mux := Web.HttpServeMux
 	server := &http.Server{
 		Addr:    c.Host,
-		Handler: Web.HttpServeMux,
+		Handler: mux,
 	}
 
 	func() {
@@ -100,7 +99,10 @@ func (p *_web) configure() {
 	})
 
 	Web.Server = server
+}
 
+func (p *_web) run() {
+	slog.Info("starting web", "host", Config.Web.Host)
 	err := webListenAndServe(Web.Server)
 	if err != nil {
 		if errors.Is(err, http.ErrServerClosed) {
